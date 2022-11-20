@@ -1,0 +1,34 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import "ol/ol.css";
+
+.map {
+	min-height: 500px;
+	min-width: 600px;
+	width: 100%;
+	height: 100%;
+}
+.mini-map {
+	border-radius: 5px;
+	width: 100%;
+	height: 300px;
+	min-height: 200px;
+}
+.ol-viewport {
+	min-height: 500px;
+}
+.mini-map .ol-viewport {
+	min-height: 200px;
+	border-radius: 5px;
+}
+
+#info {
+	height: 30px;
+}

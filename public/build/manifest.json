@@ -1,0 +1,34 @@
+{
+  "resources/js/app.js": {
+    "file": "assets/app.c48917c4.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_Map.0742d1b3.js"
+    ]
+  },
+  "resources/js/idea.js": {
+    "file": "assets/idea.a81e69d6.js",
+    "src": "resources/js/idea.js",
+    "isEntry": true,
+    "imports": [
+      "_Map.0742d1b3.js"
+    ]
+  },
+  "resources/js/newidea.js": {
+    "file": "assets/newidea.cf102ab4.js",
+    "src": "resources/js/newidea.js",
+    "isEntry": true,
+    "imports": [
+      "_Map.0742d1b3.js"
+    ]
+  },
+  "_Map.0742d1b3.js": {
+    "file": "assets/Map.0742d1b3.js"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app.57564553.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}
