@@ -8,10 +8,10 @@
 <div class="container">
 	<div class="row mb-3">
 		<div class="col">
+			<h2 class="mb-3 px-3">Profile of {{ $user->name }}</h2>
 			<div class="card">
 				<div class="card-body">
-					<h2 class="border-bottom mb-3 pb-2">Profile of {{ $user->name }}</h2>
-					<table class="table table-striped">
+					<table class="table table-striped mb-0">
 						<tr>
 							<td>
 								Active since

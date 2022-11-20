@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<h2 class="px-3 mb-3">Leaderboard</h2>
+			<h2 class="px-3 mb-3">Community/Leaderboard</h2>
 			<div class="card">
 				<div class="card-body">
 

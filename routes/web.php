@@ -51,5 +51,9 @@ Route::middleware('access')->group(function() {
 		Route::get('areas', [App\Http\Controllers\AreaController::class, 'index'])->name('areas');
 
 		Route::get('area/{area}', [App\Http\Controllers\AreaController::class, 'show'])->name('area');
+
+		Route::post('idea/{idea}/report', [App\Http\Controllers\IdeaController::class, 'report'])->name('idea.report');
+
+		Route::delete('idea/{idea}/delete', [App\Http\Controllers\IdeaController::class, 'delete'])->name('idea.delete');
 	});
 });

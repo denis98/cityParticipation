@@ -142,6 +142,17 @@ class IdeaController extends Controller
         //
     }
 
+		public function delete(Idea $idea) {
+			if( Auth::id() == $idea->issuer_id ) {
+				$idea->delete();
+				flash()->success("The idea was delete successfully.");
+				return redirect()->route('ideas.list');
+			} else {
+				flash()->danger("You are not permitted to delete this idea.");
+				return redirect()->route('idea.show', $idea);
+			}
+		}
+
     /**
      * Remove the specified resource from storage.
      *
@@ -152,4 +163,10 @@ class IdeaController extends Controller
     {
         //
     }
+
+		public function report(Idea $idea, Request $request) {
+			flash()->warning("Your report has been successfully saved and will be edited soon.");
+
+			return redirect()->route('ideas');
+		}
 }

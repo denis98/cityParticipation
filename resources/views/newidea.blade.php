@@ -31,7 +31,7 @@
 								<fieldset class="mb-3 form-floating">
 								{!! Form::text('title', null, [
 									'class' => 'form-control mb-3',
-									'placeholder' => 'Title'
+									'placeholder' => ''
 									]) !!}
 									{!! Form::label('title', 'Title') !!}
 								</fieldset>
@@ -39,7 +39,7 @@
 								<fieldset class="mb-3 form-floating">
 								{!! Form::text('topic', null, [
 									'class' => 'form-control mb-3',
-									'placeholder' => 'Topic'
+									'placeholder' => ''
 									]) !!}
 									{!! Form::label('topic', 'Topic (optional)') !!}
 								</fieldset>

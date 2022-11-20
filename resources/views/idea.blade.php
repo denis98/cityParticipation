@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('scripts')
 	@vite(['resources/sass/app.scss', 'resources/js/idea.js'])
 @endsection
@@ -12,15 +11,15 @@
 			<h2 class="px-3 mb-3">
 				Idea-Details "{{ $idea->title }}"
 				<span class="float-end">
-					<a class="btn btn-md btn-secondary" href="#">
+					<button class="btn btn-md btn-secondary" data-bs-toggle="modal" data-bs-target="#post-report-modal">
 						<i class="fas fa-flag me-2"></i>
 						Report
-					</a>
+					</button>
 					@if (Auth::id() == $idea->issuer_id)
-						<a class="btn btn-md btn-danger" href="#">
+						<button class="btn btn-md btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">
 							<i class="fas fa-trash-alt me-2"></i>
 							Delete
-						</a>
+						</button>
 					@endif
 				</span>
 			</h2>
@@ -99,7 +98,7 @@
 											<li class="list-group-item">
 												{{ $comment->content }}
 												<br>
-												<small class="text-primary">{{ $comment->issuer->name}} at {{ $comment->created_at->format('d.m.Y') }}</small>
+												<small class="text-primary">{{ $comment->issuer->name}} at {{ $comment->created_at->format('d.m.Y - H:i') }}</small>
 
 												@if ($comment->issuer == Auth::user())
 												<span class="position-absolute btn btn-md btn-outline-danger" style="right: 0px; top: 10px;">
@@ -195,7 +194,6 @@
 							</div>
 						</div>
 
-
 					{!! Form::close() !!}
 				</div>
 			@endif
@@ -254,14 +252,85 @@
 					'route' => ['idea.comments.store', $idea]
 					]) !!}
 
-				<fieldset class="mb-3">
+				<fieldset class="mb-3 form-floating">
 				{!! Form::text('content', null, [
 					'class' => 'form-control',
+					'placeholder' => '',
 					])!!}
+					{!! Form::label('What you want to say?') !!}
 				</fieldset>
 
 				{!! Form::submit('Save', [
 					'class' => 'btn btn-md btn-primary'
+					])!!}
+
+				{!! Form::close() !!}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal" id="post-report-modal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					Report this idea
+				</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				{!! Form::open([
+					'method' => 'post',
+					'files' => true,
+					'route' => ['idea.report', $idea]
+					]) !!}
+
+				<fieldset class="mb-3 form-floating">
+				{!! Form::textarea('content', null, [
+					'class' => 'form-control',
+					'placeholder' => ''
+					])!!}
+					{!! Form::label('content', 'Why do you want to report this idea?')!!}
+				</fieldset>
+
+				{!! Form::submit('Save', [
+					'class' => 'btn btn-md btn-primary'
+					])!!}
+
+				{!! Form::close() !!}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="delete-modal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					New Comment
+				</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				{!! Form::open([
+					'method' => 'delete',
+					'files' => true,
+					'route' => ['idea.delete', $idea]
+					]) !!}
+
+				<p>
+					Are you sure that you want to delete this idea?
+				</p>
+
+				{!! Form::submit('Delete', [
+					'class' => 'btn btn-md btn-danger'
 					])!!}
 
 				{!! Form::close() !!}
